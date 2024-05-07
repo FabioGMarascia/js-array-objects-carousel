@@ -1,17 +1,18 @@
 /********************* COMMON **********************/
 body {
 	background-color: #222;
-	color: red;
 	font-family: sans-serif;
 }
 
 /***** SLIDE *****/
-.slide {
+.my-h {
 	height: 38rem;
+}
+.slide {
 	display: none;
 }
 
-.active {
+.my-active {
 	display: block;
 }
 

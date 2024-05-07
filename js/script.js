@@ -1,6 +1,6 @@
 const box = document.querySelector(`.img-box`);
-const next_btn = document.getElementById(`next-btn`);
-const prev_btn = document.getElementById(`prev-btn`);
+const next_btn = document.querySelector(`#next-btn`);
+const prev_btn = document.querySelector(`#prev-btn`);
 
 const images = [
 	{
@@ -30,17 +30,67 @@ const images = [
 	},
 ];
 
+// MILESTONE #1
+
 let check = true;
 
 for (const element of images) {
+	box.innerHTML += `
+        <div class="carousel-item slide">
+        	<img src="${element.image}" class="w-100 object-fit-cover my-h border border-5 rounded" />
+       		<div class="carousel-caption d-none d-md-block">
+			   <h5 class="fw-bold fs-3">${element.title}</h5>
+			   <p class="fw-bold fs-5">${element.text}</p>
+        	</div>
+      	</div>
+        `;
 	if (check) {
-		box.innerHTML += `
-    <img src="${element.image}" class="slide w-100 object-fit-cover active" />
-    `;
+		let first_slide = document.querySelector(`.carousel-item`);
+		first_slide.classList.add(`active`);
 		check = false;
-	} else {
-		box.innerHTML += `
-    <img src="${element.image}" class="slide w-100 object-fit-cover" />
-    `;
 	}
 }
+
+const slides = document.getElementsByClassName(`slide`);
+let active_img_i;
+
+// MILESTONE #2
+// MILESTONE #3
+
+next_btn.addEventListener(`click`, () => {
+	for (let i = 0; i < slides.length; i++) {
+		const slide = slides[i];
+
+		if (slide.classList.contains(`active`)) {
+			slide.classList.remove(`active`);
+			active_img_i = i;
+		}
+	}
+
+	let next_img_i = active_img_i + 1;
+
+	if (next_img_i >= slides.length) {
+		slides[0].classList.add(`active`);
+	} else {
+		slides[next_img_i].classList.add(`active`);
+	}
+});
+
+prev_btn.addEventListener(`click`, () => {
+	for (let i = 0; i < slides.length; i++) {
+		const slide = slides[i];
+
+		if (slide.classList.contains(`active`)) {
+			slide.classList.remove(`active`);
+			active_img_i = i;
+		}
+	}
+
+	let prev_img_i = active_img_i - 1;
+
+	if (prev_img_i < 0) {
+		slides[4].classList.add(`active`);
+	} else {
+		slides[prev_img_i].classList.add(`active`);
+	}
+});
