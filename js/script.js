@@ -74,6 +74,8 @@ next_btn.addEventListener(`click`, () => {
 	if (prev_interval != 0 || next_interval != 0) {
 		clearInterval(prev_interval);
 		clearInterval(next_interval);
+		next_interval = 0;
+		prev_interval = 0;
 	}
 	nextButton();
 });
@@ -82,6 +84,8 @@ prev_btn.addEventListener(`click`, () => {
 	if (prev_interval != 0 || next_interval != 0) {
 		clearInterval(prev_interval);
 		clearInterval(next_interval);
+		next_interval = 0;
+		prev_interval = 0;
 	}
 	prevButton();
 });
@@ -92,12 +96,13 @@ let next_interval = 0;
 let prev_interval = 0;
 
 auto_next_btn.addEventListener(`click`, () => {
-	if (prev_interval != 0 || next_interval != 0) {
+	if (prev_interval != 0) {
 		clearInterval(prev_interval);
-		clearInterval(next_interval);
+		prev_interval = 0;
 	}
 	if (next_interval != 0) {
-		clearInterval(prev_interval);
+		clearInterval(next_interval);
+		next_interval = 0;
 	} else {
 		next_interval = setInterval(() => {
 			nextButton();
@@ -108,9 +113,11 @@ auto_next_btn.addEventListener(`click`, () => {
 auto_prev_btn.addEventListener(`click`, () => {
 	if (next_interval != 0) {
 		clearInterval(next_interval);
+		next_interval = 0;
 	}
 	if (prev_interval != 0) {
 		clearInterval(prev_interval);
+		prev_interval = 0;
 	} else {
 		prev_interval = setInterval(() => {
 			prevButton();
