@@ -1,4 +1,5 @@
 const box = document.querySelector(`.img-box`);
+const box_2 = document.querySelector(`.thumb-box`);
 const next_btn = document.querySelector(`#next-btn`);
 const prev_btn = document.querySelector(`#prev-btn`);
 
@@ -43,54 +44,75 @@ for (const element of images) {
 			   <p class="fw-bold fs-5">${element.text}</p>
         	</div>
       	</div>
-        `;
+    `;
+	box_2.innerHTML += `
+		<div class="col-2 px-1">
+			<img src="${element.image}" class="img-thumbnail thumb w-100 object-fit-cover" />
+		</div>
+	`;
 	if (check) {
 		let first_slide = document.querySelector(`.carousel-item`);
+		let first_thumb = document.querySelector(`.thumb`);
 		first_slide.classList.add(`active`);
+		first_thumb.classList.add(`active-thumb`);
 		check = false;
 	}
 }
 
-const slides = document.getElementsByClassName(`slide`);
-let active_img_i;
-
 // MILESTONE #2
 // MILESTONE #3
+
+const slides = document.getElementsByClassName(`slide`);
+const thumbs = document.getElementsByClassName(`thumb`);
+let active_img_i;
+let active_thumb_i;
 
 next_btn.addEventListener(`click`, () => {
 	for (let i = 0; i < slides.length; i++) {
 		const slide = slides[i];
+		const thumb = thumbs[i];
 
-		if (slide.classList.contains(`active`)) {
+		if (slide.classList.contains(`active`) && thumb.classList.contains(`active-thumb`)) {
 			slide.classList.remove(`active`);
 			active_img_i = i;
+			thumb.classList.remove(`active-thumb`);
+			active_thumb_i = i;
 		}
 	}
 
 	let next_img_i = active_img_i + 1;
+	let next_thumb_i = active_thumb_i + 1;
 
 	if (next_img_i >= slides.length) {
 		slides[0].classList.add(`active`);
+		thumbs[0].classList.add(`active-thumb`);
 	} else {
 		slides[next_img_i].classList.add(`active`);
+		thumbs[next_thumb_i].classList.add(`active-thumb`);
 	}
 });
 
 prev_btn.addEventListener(`click`, () => {
 	for (let i = 0; i < slides.length; i++) {
 		const slide = slides[i];
+		const thumb = thumbs[i];
 
-		if (slide.classList.contains(`active`)) {
+		if (slide.classList.contains(`active`) && thumb.classList.contains(`active-thumb`)) {
 			slide.classList.remove(`active`);
 			active_img_i = i;
+			thumb.classList.remove(`active-thumb`);
+			active_thumb_i = i;
 		}
 	}
 
 	let prev_img_i = active_img_i - 1;
+	let prev_thumb_i = active_thumb_i - 1;
 
 	if (prev_img_i < 0) {
 		slides[4].classList.add(`active`);
+		thumbs[4].classList.add(`active-thumb`);
 	} else {
 		slides[prev_img_i].classList.add(`active`);
+		thumbs[prev_thumb_i].classList.add(`active-thumb`);
 	}
 });
