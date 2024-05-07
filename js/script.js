@@ -1,5 +1,5 @@
-const box = document.querySelector(`.img-box`);
-const box_2 = document.querySelector(`.thumb-box`);
+const box = document.querySelector(`.slides-box`);
+const box_2 = document.querySelector(`.thumbs-box`);
 const next_btn = document.querySelector(`#next-btn`);
 const prev_btn = document.querySelector(`#prev-btn`);
 const auto_next_btn = document.querySelector(`#auto-next-btn`);
