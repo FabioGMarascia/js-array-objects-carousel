@@ -2,6 +2,8 @@ const box = document.querySelector(`.img-box`);
 const box_2 = document.querySelector(`.thumb-box`);
 const next_btn = document.querySelector(`#next-btn`);
 const prev_btn = document.querySelector(`#prev-btn`);
+const auto_next_btn = document.querySelector(`#auto-next-btn`);
+const auto_prev_btn = document.querySelector(`#auto-prev-btn`);
 
 const images = [
 	{
@@ -61,6 +63,7 @@ for (const element of images) {
 
 // MILESTONE #2
 // MILESTONE #3
+// BONUS #1
 
 const slides = document.getElementsByClassName(`slide`);
 const thumbs = document.getElementsByClassName(`thumb`);
@@ -68,51 +71,49 @@ let active_img_i;
 let active_thumb_i;
 
 next_btn.addEventListener(`click`, () => {
-	for (let i = 0; i < slides.length; i++) {
-		const slide = slides[i];
-		const thumb = thumbs[i];
-
-		if (slide.classList.contains(`active`) && thumb.classList.contains(`active-thumb`)) {
-			slide.classList.remove(`active`);
-			active_img_i = i;
-			thumb.classList.remove(`active-thumb`);
-			active_thumb_i = i;
-		}
+	if (prev_interval != 0 || next_interval != 0) {
+		clearInterval(prev_interval);
+		clearInterval(next_interval);
 	}
-
-	let next_img_i = active_img_i + 1;
-	let next_thumb_i = active_thumb_i + 1;
-
-	if (next_img_i >= slides.length) {
-		slides[0].classList.add(`active`);
-		thumbs[0].classList.add(`active-thumb`);
-	} else {
-		slides[next_img_i].classList.add(`active`);
-		thumbs[next_thumb_i].classList.add(`active-thumb`);
-	}
+	nextButton();
 });
 
 prev_btn.addEventListener(`click`, () => {
-	for (let i = 0; i < slides.length; i++) {
-		const slide = slides[i];
-		const thumb = thumbs[i];
-
-		if (slide.classList.contains(`active`) && thumb.classList.contains(`active-thumb`)) {
-			slide.classList.remove(`active`);
-			active_img_i = i;
-			thumb.classList.remove(`active-thumb`);
-			active_thumb_i = i;
-		}
+	if (prev_interval != 0 || next_interval != 0) {
+		clearInterval(prev_interval);
+		clearInterval(next_interval);
 	}
+	prevButton();
+});
 
-	let prev_img_i = active_img_i - 1;
-	let prev_thumb_i = active_thumb_i - 1;
+// BONUS #2
+// BONUS #3
+let next_interval = 0;
+let prev_interval = 0;
 
-	if (prev_img_i < 0) {
-		slides[4].classList.add(`active`);
-		thumbs[4].classList.add(`active-thumb`);
+auto_next_btn.addEventListener(`click`, () => {
+	if (prev_interval != 0 || next_interval != 0) {
+		clearInterval(prev_interval);
+		clearInterval(next_interval);
+	}
+	if (next_interval != 0) {
+		clearInterval(prev_interval);
 	} else {
-		slides[prev_img_i].classList.add(`active`);
-		thumbs[prev_thumb_i].classList.add(`active-thumb`);
+		next_interval = setInterval(() => {
+			nextButton();
+		}, 3000);
+	}
+});
+
+auto_prev_btn.addEventListener(`click`, () => {
+	if (next_interval != 0) {
+		clearInterval(next_interval);
+	}
+	if (prev_interval != 0) {
+		clearInterval(prev_interval);
+	} else {
+		prev_interval = setInterval(() => {
+			prevButton();
+		}, 3000);
 	}
 });
