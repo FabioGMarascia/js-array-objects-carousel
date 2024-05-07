@@ -18,11 +18,52 @@
 		<title>TEMPLATE</title>
 	</head>
 	<body>
-		<header></header>
+		<h1 class="text-white text-center display-5 fw-bold mt-2">CAROUSEL</h1>
 
-		<main></main>
+		<div class="row justify-content-center mx-0 mt-3">
+			<div class="col-8">
+				<img src="./img/01.webp" class="slide w-100 active object-fit-contain" />
+				<img src="./img/02.webp" class="slide w-100 object-fit-contain" />
+				<img src="./img/03.webp" class="slide w-100" />
+				<img src="./img/04.webp" class="slide w-100" />
+				<img src="./img/05.webp" class="slide w-100 object-fit-contain" />
+			</div>
+		</div>
 
-		<footer></footer>
+		<div class="row justify-content-center mx-0 mt-3">
+			<div class="col-7">
+				<div class="row justify-content-center">
+					<div class="col-2 text-end">
+						<img src="./img/01.webp" class="img-thumbnail thumb active-thumb" />
+					</div>
+
+					<div class="col-2 text-center">
+						<img src="./img/02.webp" class="img-thumbnail thumb" />
+					</div>
+
+					<div class="col-3">
+						<img src="./img/03.webp" class="img-thumbnail thumb" />
+					</div>
+
+					<div class="col-3">
+						<img src="./img/04.webp" class="img-thumbnail thumb" />
+					</div>
+
+					<div class="col-2">
+						<img src="./img/05.webp" class="img-thumbnail thumb" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center mx-0 mb-2">
+			<div class="col-4 mt-3 text-center">
+				<button id="prev-btn" class="btn bg-primary px-1">PREVIOUS</button>
+
+				<button id="next-btn" class="btn bg-primary px-4">NEXT</button>
+			</div>
+		</div>
+
 		<script type="text/javascript" src="./js/script.js"></script>
 	</body>
 </html>

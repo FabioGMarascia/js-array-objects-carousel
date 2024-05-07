@@ -1,9 +1,32 @@
 /********************* COMMON **********************/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body {
+	background-color: #222;
+	color: white;
+	font-family: sans-serif;
 }
-/********************* HEADER **********************/
-/********************** MAIN ***********************/
-/********************* FOOTER **********************/
+
+/***** SLIDE *****/
+.slide {
+	height: 38rem;
+	display: none;
+}
+
+.active {
+	display: block;
+}
+
+/***** THUMBNAIL *****/
+.img-thumbnail {
+	height: 8rem;
+}
+
+.thumb {
+	opacity: 0.2;
+	border: 0;
+	padding: 0;
+}
+
+.active-thumb {
+	opacity: 1;
+	padding: 0.25rem;
+}
