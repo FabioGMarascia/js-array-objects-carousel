@@ -8,12 +8,9 @@ body {
 .my-h {
 	height: 38rem;
 }
+
 .slide {
 	display: none;
-}
-
-.my-active {
-	display: block;
 }
 
 /***** THUMBNAIL *****/
